@@ -1,0 +1,99 @@
+\documentclass{ctexart}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{ulem}
+
+\title{作业一: 给出黎曼可积和勒贝格可积的定义, 并分析二者的区别}
+
+\author{陈一如 \\ 信息与计算科学3200104404}
+
+\begin{document}
+
+\maketitle
+
+这是一个来自分析学领域的关于积分的问题，黎曼积分是我们最常见的积分形式，而勒贝格积分是黎曼积分的一种拓展，他将积分运算拓展到任何测度空间之中,一下给出这两种积分的定义和区别.
+\section{定义}
+\subsection{黎曼可积定义}
+\subsubsection{定义1}
+设闭区间$\left[ a,b \right]$上有$n-1$个点,依次为
+$$
+a = x_0 <x_1<x_2< \cdots<x_n-1<x_n=b ,
+$$
+他们把区间$\left[ a,b \right]$分成$\Delta_i=\left[ x_{i-1},x_i \right]$,$xi = 1,2,\cdots,n$.这些分点或者这些闭子区间构成对$\left[ a,b \right]$的一个\textbf{分割},记为
+$$T=\left\{x_0,x_1, \cdots,x_n \right\}\mbox{或}\left\{\Delta_0,\Delta_1, \cdots,\Delta_n \right\}$$
+小区间的长度为$\Delta x_i=x_{i-1}-x_{i}$,并记
+$$
+\Vert T \Vert = \max \limits_{1<i<n} \left\{\Delta x_i\right\},
+$$
+称为分割$T$的模。
+
+\subsubsection{定义2}
+设$f$是定义在$\left[ a,b \right]$上的一个函数.对于$\left[ a,b \right]$上的一个分割$T = \left\{\Delta_0,\Delta_1, \cdots,\Delta_n \right\}$,任取点$\xi _i\in \Delta_i,i=1,2,\cdots,n$,并作和式
+$$
+\sum\limits_{i=1}^n f \left(\xi _i\right)\Delta x_i.
+$$
+称此和式为函数$f$在$\left[ a,b \right]$上的一个\textbf{积分和},也称作\textbf{黎曼和}.
+\subsubsection{定义3}
+设$f$是定义在$\left[ a,b \right]$上的一个函数,$J$是一个确定的实数.若对任给的正数$\varepsilon$,总存在着某一个正数$\delta$使得对任何分割$T$,以及在其上任意选取的点集$\left\{ \xi_i \right\}$ ,只要$\Vert T \Vert < \delta$ ,就有
+$$
+\lvert\sum\limits_{i=1}^n f \left(\xi _i\right)\Delta x_i - J \lvert < \varepsilon
+$$
+则称函数$f$在区间$\left[ a,b \right]$上\textbf{可积}或者\textbf{黎曼可积}；数$J$称为$f$在$\left[ a,b \right]$ 上的\textbf{定积分}或者\textbf{黎曼积分}，记作
+$$
+J = \int_{a}^{b}f\left(x\right)dx
+$$
+其中，$f$称为被积函数，$x$称为积分变量，$\left[ a,b \right]$称为积分区间，$a,b$分别称为这个定积分的上限和下限.
+\subsection{勒贝格可积定义}
+\subsubsection{非负简单函数的勒贝格积分}
+设$D$是可测集，$\left\{E_k \right\}$是$D$的有限个或可数个两两不相交的可测子集，使得$\bigcup E_K = D$则称$\left\{E_k \right\}$为$D$的一个\textbf{分划}.
+
+
+设$f$是可测集$D$上的非负简单函数.于是有$D$的分划$\left\{E_i \right\}_1\leq i \leq S$以及非负实数组$\left\{a_i \right\}_{1\leq i \leq S}$使
+$$
+f \left(x\right) = \sum\limits_{i=1}^S a_i \chi _{E_i}\left( x \right)\mbox{，}x\in D.
+$$
+此时我们定义$f$在$D$上的勒贝格积分为 
+$$
+\int_{D}f\left(x\right)dx = \sum\limits_{i=1}^S a_i m\left( E_i\right ),
+$$
+并且当$\int_{D}f\left(x\right)dx < \infty$时，称$f$在$D$上$L$可积.
+\subsubsection{非负可测函数的勒贝格积分}
+设$f$是可测集$D$上的非负可测函数.可以证明，取$D$上的非负简单函数列
+$\left\{f_n\right\}$，使得对每一$x \in D$，$\left\{f_n\right\}$单增收敛于$f\left(x\right)$.此时 $f$在$D$上的勒贝格积分定义为
+$$
+\int_{D} f dx = \lim_{n\rightarrow \infty} \int_{D}f_n dx.
+$$
+并称$f$的积分由$\left\{f_n\left(x\right)\right\}$来定义.此外当$\int_{D} f dx < \infty$，称$f$在$D$上$L$可积.
+\subsubsection{一般可测函数的勒贝格积分}
+设$f$是可测集$D$上的可测函数.对每一$x\in D$，令
+$$
+f_+ = \max\left\{0,f \left(x\right)\right\},f_- = \max\left\{0,-f \left(x\right)\right\},
+$$
+则$f_+$和$f_-$分别称为$f$的正部和负部，他们都是非负可测函数，并且
+$$
+f \left(x\right)  = f_+ \left(x\right) +f_-\left(x\right),
+$$
+今若 $ \int_{D}f_+dx$和$ \int_{D}f_-dx$不同时为$\infty$则$f$在$D$上的勒贝格积分定义为
+$$
+\int_{D}f =\int_{D} f_+ + \int_{D}f_-,
+$$
+此外当$\int_{D} f dx$有限时，称$f$在$D$上$L$可积，并记为$f \in L\left(D\right)$.
+
+\section{区别}
+\subsection{定理}
+\subsubsection{定理1}
+为了使$\left[ a,b \right]$上的有界函数$f$是$R$可积,充分必要条件是$f$在$\left[ a,b \right]$上几乎处处连续.此外，当$f$为$R$可积时，$f$一定$L$可积，并且两个积分值相等.
+\subsubsection{定理2}
+若定义在$R$上的函数$f\left(x\right)$在任何有限区间上有界，且它在$\left(-\infty,+\infty\right)$上的广义$R$积分绝对收敛，则$f\left(x\right) \in L\left(-\infty,+\infty\right)$,且 
+$$
+\left(L\right)\int_{-\infty}^{+\infty} f\left(x\right) dx = \left(R\right)\int_{-\infty}^{+\infty} f\left(x\right) dx .
+$$
+\subsection{命题}
+\subsubsection{命题1}
+勒贝格积分是绝对收敛的，而黎曼积分不是.
+\subsubsection{命题2}
+勒贝格可积函数列构成的线性空间是封闭的，而黎曼可积函数列构成的线性空间对极限的运算不是封闭的.
+\end{document}
+
+
